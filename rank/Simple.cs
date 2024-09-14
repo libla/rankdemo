@@ -59,17 +59,29 @@ internal class Simple : Rank
 		customer.Score += score;
 		treap.Insert(customer);
 		var previous = treap.Previous(customer);
-		int start = previous == null ? -1 : previous.Rank;
-		customer.Rank = start + 1;
+		int start = previous == null ? 0 : previous.Rank + 1;
 		if (!end.HasValue)
 		{
 			list.Add(customer);
 			end = list.Count - 1;
 		}
-		for (int i = end.Value; i > customer.Rank; i--)
+		if (end.Value >= start)
 		{
-			list[i] = list[i - 1];
-			list[i].Rank = i;
+			customer.Rank = start;
+			for (int i = end.Value; i > customer.Rank; i--)
+			{
+				list[i] = list[i - 1];
+				list[i].Rank = i;
+			}
+		}
+		else
+		{
+			customer.Rank = start - 1;
+			for (int i = end.Value; i < customer.Rank; i++)
+			{
+				list[i] = list[i + 1];
+				list[i].Rank = i;
+			}
 		}
 		list[customer.Rank] = customer;
 		return customer.Score;

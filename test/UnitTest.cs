@@ -31,7 +31,7 @@ namespace Test
 				for (var i = 0; i < 1000; i++)
 				{
 					var id = keys[random.Next(keys.Count)];
-					var value = (decimal)(random.Next(100000) * 0.01);
+					var value = (decimal)(random.Next(200000) * 0.01) - 1000;
 					if (!dict.TryGetValue(id, out var old))
 						old = 0;
 					dict[id] = old + value;
@@ -73,7 +73,7 @@ namespace Test
 			for (var i = 0; i < 1000000; i++)
 			{
 				var id = keys[random.Next(keys.Count)];
-				var value = (decimal)(random.Next(100000) * 0.01);
+				var value = (decimal)(random.Next(200000) * 0.01) - 1000;
 				rank.Update(id, value);
 			}
 		}
@@ -85,7 +85,7 @@ namespace Test
 			for (var i = 0; i < 1000; i++)
 			{
 				var id = keys[random.Next(keys.Count)];
-				var value = (decimal)(random.Next(100000) * 0.01);
+				var value = (decimal)(random.Next(200000) * 0.01) - 1000;
 				rank.Update(id, value);
 			}
 			for (var i = 0; i < 1000000; i++)
@@ -102,7 +102,7 @@ namespace Test
 			for (var i = 0; i < 1000; i++)
 			{
 				var id = keys[random.Next(keys.Count)];
-				var value = (decimal)(random.Next(100000) * 0.01);
+				var value = (decimal)(random.Next(200000) * 0.01) - 1000;
 				rank.Update(id, value);
 			}
 			for (var i = 0; i < 1000000; i++)
